@@ -6,7 +6,8 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     focus_control cross_hair;
-    float current_speed = 10;
+    float current_speed = 5;
+    float sprint_speed = 10;
     private float turning_speed = 180;
     float turning_sensitivity = 20;
     float elevation_angle = 0;
@@ -40,9 +41,9 @@ public class MovementController : MonoBehaviour
         elevation_angle = Mathf.Clamp(elevation_angle , - 85f, 85f);
         cross_hair.update_elevation(elevation_angle);
 
-       
 
 
+        if (should_sprint()) sprint_forward();
        
     
     
@@ -102,6 +103,11 @@ public class MovementController : MonoBehaviour
         transform.position -= current_speed * transform.forward * Time.deltaTime;
     }
 
+    private void sprint_forward()
+    {
+        transform.position += sprint_speed * transform.forward * Time.deltaTime;
+    }
+
     // User input for movement
     private bool should_move_forward()
     {
@@ -111,6 +117,11 @@ public class MovementController : MonoBehaviour
     private bool should_move_backward()
     {
         return Input.GetKey(KeyCode.S);
+    }
+
+    private bool should_sprint()
+    {
+        return Input.GetKey(KeyCode.LeftShift);
     }
 
     private bool should_strafe_right()
