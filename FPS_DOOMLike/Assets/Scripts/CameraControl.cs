@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    float camera_distance = 0;
-    float camera_height = 1;
+    float camera_distance = -0.2f;
+    float camera_height = 2.35f;
  
 
     Transform character, focus;

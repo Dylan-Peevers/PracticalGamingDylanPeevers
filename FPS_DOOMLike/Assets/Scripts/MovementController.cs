@@ -38,7 +38,7 @@ public class MovementController : MonoBehaviour
         turn(Input.GetAxis("Horizontal"));
 
         elevation_angle -= Input.GetAxis("Vertical");
-        elevation_angle = Mathf.Clamp(elevation_angle , - 85f, 85f);
+        elevation_angle = Mathf.Clamp(elevation_angle , - 85f, 40f);
         cross_hair.update_elevation(elevation_angle);
 
 
